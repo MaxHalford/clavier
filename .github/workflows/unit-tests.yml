@@ -19,6 +19,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
           poetry install
+          pip install matplotlib
       - name: pytest
         run: |
           poetry run pytest

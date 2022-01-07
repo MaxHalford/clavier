@@ -195,7 +195,7 @@ c 1.4142
 
 ```
 
-The `cache` parameter determines whether the result should be cached for the next call.
+The `cache` parameter determines whether or not the result should be cached for the next call.
 
 ### Physical layout specification
 

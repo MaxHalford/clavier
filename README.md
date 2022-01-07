@@ -1,5 +1,7 @@
 <h1>clavier</h1>
 
+[![Unit tests](https://github.com/MaxHalford/clavier/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/MaxHalford/clavier/actions/workflows/unit-tests.yml)
+
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [User guide](#user-guide)
@@ -259,4 +261,4 @@ pytest
 
 ## License
 
-The MIT License (MIT). Please see the license file for more information.
+The MIT License (MIT). Please see the [license file](LICENSE) for more information.

@@ -133,9 +133,9 @@ class Keyboard(collections.UserDict):
                 for j, char in enumerate(row[::2])
                 if char
             },
-            staggering=0,
-            horizontal_pitch=1,
-            vertical_pitch=1,
+            staggering=staggering,
+            horizontal_pitch=horizontal_pitch,
+            vertical_pitch=vertical_pitch,
         )
 
     def __repr__(self):

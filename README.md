@@ -19,7 +19,11 @@
 
 ## Introduction
 
+Default [edit distances](https://www.wikiwand.com/en/Edit_distance), such as the [Levenshtein distance](https://www.wikiwand.com/en/Levenshtein_distance), don't differentiate between characters. The distance between two characters is either 0 or 1. This package allows you to measure edit distances by taking into account keyboard layouts.
+
 The scope is purposefully limited to alphabetical, numeric, and punctuation keys. That's because this package is meant to assist in analyzing user inputs -- e.g. for [spelling correction](https://norvig.com/spell-correct.html) in a search engine.
+
+The goal of this package is to be flexible. You can define any [logical layout](https://deskthority.net/wiki/Keyboard_layouts#Logical_layout), such as QWERTY or AZERTY. You can also control the [physical layout](https://deskthority.net/wiki/Physical_keyboard_layout) by defining where the keys are on the board.
 
 ## Installation
 
@@ -52,7 +56,7 @@ z x c v b n m , . /
 
 ```
 
-Here is the list of available layouts:
+Here is the list of currently available layouts:
 
 ```py
 >>> for layout in (member for member in dir(clavier) if member.startswith('load_')):
@@ -103,6 +107,8 @@ Measure a modified version of the [Levenshtein distance](https://www.wikiwand.co
 
 ```
 
+You can also override the deletion cost by specifying the `deletion_cost` parameter, and the insertion cost via the `insertion_cost` parameter. Both default to 1.
+
 ### Typing distance
 
 Measure the sum of distances between each pair of consecutive characters. This can be useful for studying [keystroke dynamics](https://www.wikiwand.com/en/Keystroke_dynamics).
@@ -117,7 +123,7 @@ For sentences, you can split them up into words and sum the typing distances.
 
 ```py
 >>> sentence = 'the quick brown fox jumps over the lazy dog'
->>> sum(keyboard.typing_distance(word) for word in sentence.split(" "))
+>>> sum(keyboard.typing_distance(word) for word in sentence.split(' '))
 105.60457487263012
 
 ```
@@ -209,12 +215,14 @@ You can of course specify your own keyboard layout. There are different ways to 
 ...     '1': (0, 0), '2': (0, 1), '3': (0, 2),
 ...     '4': (1, 0), '5': (1, 1), '6': (1, 2),
 ...     '7': (2, 0), '8': (2, 1), '9': (2, 2),
-...                  '☎': (3, 1)
+...     '*': (3, 0), '0': (3, 1), '#': (3, 2),
+...                  '☎': (4, 1)
 ... })
 >>> keypad
 1 2 3
 4 5 6
 7 8 9
+* 0 #
   ☎
 
 ```

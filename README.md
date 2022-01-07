@@ -1,7 +1,24 @@
-<h1>clavier</h1>
+<div align="center">
+  <h1>clavier</h1>
+  <q><i>Measuring distance between keyboard characters.</i></q>
+</div>
+<br>
 
-[![Unit tests](https://github.com/MaxHalford/clavier/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/MaxHalford/clavier/actions/workflows/unit-tests.yml)
+<div align="center">
+  <!-- Tests -->
+  <a href="https://github.com/MaxHalford/clavier/actions?query=workflow%3Atests">
+    <img src="https://github.com/MaxHalford/clavier/workflows/tests/badge.svg?style=flat-square" alt="tests">
+  </a>
+  <!-- License -->
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="license">
+  </a>
+</div>
+<br>
 
+## Table of contents
+
+- [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [User guide](#user-guide)

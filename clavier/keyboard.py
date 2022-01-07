@@ -1,11 +1,16 @@
-from typing import Dict, List, Tuple, Union
+from typing import Dict, Iterator, List, Tuple, Union
 import collections
 import itertools
+import operator
 import textwrap
 
 
 class Keyboard(collections.UserDict):
     """"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._neighbors_cache = {}
 
     @property
     def n_rows(self):
@@ -20,7 +25,7 @@ class Keyboard(collections.UserDict):
         return (self.n_rows, self.n_columns)
 
     def char_distance(self, c1: str, c2: str) -> float:
-        """Euclidean distance between two characters."""
+        """Measure the Euclidean distance between two characters."""
         return abs(self[c1] - self[c2]) if c1 != c2 else 0.0
 
     def word_distance(
@@ -54,7 +59,34 @@ class Keyboard(collections.UserDict):
         return D[-1][-1]
 
     def typing_distance(self, word: str) -> float:
+        """Measure the sum of distances between each pair of consecutive characters."""
         return sum(self.char_distance(c1, c2) for c1, c2 in zip(word, word[1:]))
+
+    def nearest_neighbors(
+        self, char: str, k=None, cache=False
+    ) -> Iterator[Tuple[str, float]]:
+        """Iterate over the k closest neighbors to a char."""
+
+        if cache and (neighbors := self._neighbors_cache):
+            yield from neighbors
+            return
+
+        neighbors = sorted(
+            (
+                (neighbor, self.char_distance(char, neighbor))
+                for neighbor in self
+                if neighbor != char
+            ),
+            key=operator.itemgetter(1),
+        )
+
+        if k is not None:
+            neighbors = neighbors[:k]
+
+        if cache:
+            self._neighbors_cache[char] = neighbors
+
+        yield from neighbors
 
     @classmethod
     def from_coordinates(

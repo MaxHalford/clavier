@@ -26,6 +26,7 @@
   - [Distance between characters](#distance-between-characters)
   - [Distance between words](#distance-between-words)
   - [Typing distance](#typing-distance)
+  - [Nearest neighbors](#nearest-neighbors)
   - [Physical layout specification](#physical-layout-specification)
     - [Staggering](#staggering)
     - [Key pitch](#key-pitch)
@@ -174,6 +175,27 @@ Interestingly, this can be used to compare keyboard layouts in terms of efficien
 ```
 
 It seems the Dvorak layout is in fact slower than the QWERTY layout. But of course this might not be the case in general.
+
+### Nearest neighbors
+
+You can iterate over the `k` nearest neighbors of any character.
+
+```py
+>>> qwerty = clavier.load_qwerty()
+>>> for char, dist in qwerty.nearest_neighbors('s', k=8, cache=True):
+...     print(char, f'{dist:.4f}')
+w 1.0000
+a 1.0000
+d 1.0000
+x 1.0000
+q 1.4142
+e 1.4142
+z 1.4142
+c 1.4142
+
+```
+
+The `cache` parameter determines whether the result should be cached for the next call.
 
 ### Physical layout specification
 

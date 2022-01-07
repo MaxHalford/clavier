@@ -1,6 +1,6 @@
 <div align="center">
   <h1>clavier</h1>
-  <p>Measure edit distance based on keyboard character layout.</p>
+  <p>Measure edit distance based on keyboard layout.</p>
 </div>
 <br>
 

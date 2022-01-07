@@ -6,8 +6,8 @@
 
 <div align="center">
   <!-- Tests -->
-  <a href="https://github.com/MaxHalford/clavier/actions?query=workflow%3Atests">
-    <img src="https://github.com/MaxHalford/clavier/workflows/tests/badge.svg?style=flat-square" alt="tests">
+  <a href="https://github.com/MaxHalford/clavier/actions/workflows/unit-tests.yml">
+    <img src="https://github.com/MaxHalford/clavier/actions/workflows/unit-tests.yml/badge.svg?style=flat-square" alt="unit-tests">
   </a>
   <!-- License -->
   <a href="https://opensource.org/licenses/MIT">

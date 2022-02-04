@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "clavier"
 version = "0.1.0"
-description = " Measuring distance between keyboards characters"
+description = "Measuring distance between keyboards characters"
 authors = ["MaxHalford <maxhalford25@gmail.com>"]
 license = "MIT"
 

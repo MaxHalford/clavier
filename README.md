@@ -112,6 +112,9 @@ Measure the Euclidean distance between two characters on the keyboard.
 >>> keyboard.char_distance('1', 'm')
 6.708203932499369
 
+>>> keyboard.char_distance('1', 'm', metric='l1')
+9.0
+
 ```
 
 ### Distance between words
@@ -124,6 +127,9 @@ Measure a modified version of the [Levenshtein distance](https://www.wikiwand.co
 
 >>> keyboard.word_distance('apple', 'woplee')
 3.414213562373095
+
+>>> keyboard.word_distance('apple', 'woplee', metric='l1')
+4.0
 
 ```
 
@@ -145,6 +151,9 @@ For sentences, you can split them up into words and sum the typing distances.
 >>> sentence = 'the quick brown fox jumps over the lazy dog'
 >>> sum(keyboard.typing_distance(word) for word in sentence.split(' '))
 105.60457487263012
+
+>>> sum(keyboard.typing_distance(word, metric='l1') for word in sentence.split(' '))
+124.0
 
 ```
 

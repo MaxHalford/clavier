@@ -24,12 +24,18 @@ class Keyboard(collections.UserDict):
     def shape(self):
         return (self.n_rows, self.n_columns)
 
-    def char_distance(self, c1: str, c2: str) -> float:
+    def char_distance(self, c1: str, c2: str, metric='l2') -> float:
         """Measure the Euclidean distance between two characters."""
-        return abs(self[c1] - self[c2]) if c1 != c2 else 0.0
+        if c1 == c2:
+            return 0.0
+        if metric == 'l2':
+            return abs(self[c1] - self[c2])
+        elif metric == 'l1':
+            return abs(self[c1].real - self[c2].real) + abs(self[c1].imag - self[c2].imag)
+        raise ValueError(f"Unknown metric: {metric}, must be 'l1' or 'l2'")
 
     def word_distance(
-        self, w1: str, w2: str, deletion_cost=1, insertion_cost=1
+        self, w1: str, w2: str, deletion_cost=1, insertion_cost=1, metric='l2'
     ) -> float:
         """Levenshtein distance between two words.
 
@@ -49,7 +55,7 @@ class Keyboard(collections.UserDict):
 
         for j, c1 in enumerate(w1, start=1):
             for i, c2 in enumerate(w2, start=1):
-                substitution_cost = self.char_distance(c1, c2)
+                substitution_cost = self.char_distance(c1, c2, metric=metric)
                 D[i][j] = min(
                     D[i - 1][j] + deletion_cost,
                     D[i][j - 1] + insertion_cost,
@@ -58,12 +64,12 @@ class Keyboard(collections.UserDict):
 
         return D[-1][-1]
 
-    def typing_distance(self, word: str) -> float:
+    def typing_distance(self, word: str, metric='l2') -> float:
         """Measure the sum of distances between each pair of consecutive characters."""
-        return sum(self.char_distance(c1, c2) for c1, c2 in zip(word, word[1:]))
+        return sum(self.char_distance(c1, c2, metric=metric) for c1, c2 in zip(word, word[1:]))
 
     def nearest_neighbors(
-        self, char: str, k=None, cache=False
+        self, char: str, k=None, cache=False, metric='l2'
     ) -> Iterator[Tuple[str, float]]:
         """Iterate over the k closest neighbors to a char."""
 
@@ -73,7 +79,7 @@ class Keyboard(collections.UserDict):
 
         neighbors = sorted(
             (
-                (neighbor, self.char_distance(char, neighbor))
+                (neighbor, self.char_distance(char, neighbor, metric=metric))
                 for neighbor in self
                 if neighbor != char
             ),

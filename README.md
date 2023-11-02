@@ -79,10 +79,16 @@ z x c v b n m , . /
 Here is the list of currently available layouts:
 
 ```py
->>> for layout in (member for member in dir(clavier) if member.startswith('load_')):
+>>> for layout in sorted(member for member in dir(clavier) if member.startswith('load_')):
 ...     print(layout.replace('load_', ''))
 ...     exec(f'print(clavier.{layout}())')
 ...     print('---')
+dialpad
+1 2 3
+4 5 6
+7 8 9
+* 0 #
+---
 dvorak
 ` 1 2 3 4 5 6 7 8 9 0 [ ]
 ' , . p y f g c r l / = \

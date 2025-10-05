@@ -115,10 +115,10 @@ Measure the Euclidean distance between two characters on the keyboard.
 1.0
 
 >>> keyboard.char_distance('q', '2')
-1.4142135623730951
+1.414213...
 
 >>> keyboard.char_distance('1', 'm')
-6.708203932499369
+6.708203...
 
 >>> keyboard.char_distance('1', 'm', metric='l1')
 9.0
@@ -131,10 +131,10 @@ Measure a modified version of the [Levenshtein distance](https://www.wikiwand.co
 
 ```py
 >>> keyboard.word_distance('apple', 'wople')
-2.414213562373095
+2.414213...
 
 >>> keyboard.word_distance('apple', 'woplee')
-3.414213562373095
+3.414213...
 
 >>> keyboard.word_distance('apple', 'woplee', metric='l1')
 4.0
@@ -149,7 +149,7 @@ Measure the sum of distances between each pair of consecutive characters. This c
 
 ```py
 >>> keyboard.typing_distance('hello')
-10.245040190466598
+10.2450401...
 
 ```
 
@@ -158,7 +158,7 @@ For sentences, you can split them up into words and sum the typing distances.
 ```py
 >>> sentence = 'the quick brown fox jumps over the lazy dog'
 >>> sum(keyboard.typing_distance(word) for word in sentence.split(' '))
-105.60457487263012
+105.604574...
 
 >>> sum(keyboard.typing_distance(word, metric='l1') for word in sentence.split(' '))
 124.0
@@ -183,11 +183,11 @@ Interestingly, this can be used to compare keyboard layouts in terms of efficien
 
 >>> qwerty = clavier.load_qwerty()
 >>> sum(qwerty.typing_distance(word) for word in words)
-740.3255229138255
+740.325522...
 
 >>> dvorak = clavier.load_dvorak()
 >>> sum(dvorak.typing_distance(word) for word in words)
-923.6597116104518
+923.659711...
 
 ```
 

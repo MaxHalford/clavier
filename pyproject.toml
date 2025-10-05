@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "clavier"
+name = "clavier_lib"
 version = "0.1.0"
 description = "Measuring distance between keyboards characters"
 authors = ["MaxHalford <maxhalford25@gmail.com>"]
@@ -8,7 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.8"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
 
 [build-system]

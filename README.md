@@ -48,6 +48,8 @@ The goal of this package is to be flexible. You can define any [logical layout](
 ## Installation
 
 ```sh
+pip install clavier_lib
+# Or
 pip install git+https://github.com/MaxHalford/clavier
 ```
 

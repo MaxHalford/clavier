@@ -1,4 +1,4 @@
-from clavier.keyboard import Keyboard
+from clavier_lib.keyboard import Keyboard
 
 
 def load_qwerty(**kwargs):
@@ -9,7 +9,7 @@ def load_qwerty(**kwargs):
         a s d f g h j k l ; '
         z x c v b n m , . /
         """,
-        **kwargs
+        **kwargs,
     )
 
 
@@ -21,7 +21,7 @@ def load_dvorak(**kwargs):
         a o e u i d h t n s -
         ; q j k x b m w v z
         """,
-        **kwargs
+        **kwargs,
     )
 
 
@@ -33,5 +33,5 @@ def load_dialpad(**kwargs):
         7 8 9
         * 0 #
         """,
-        **kwargs
+        **kwargs,
     )

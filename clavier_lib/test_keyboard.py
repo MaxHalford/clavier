@@ -1,6 +1,6 @@
 import pytest
 
-import clavier
+import clavier_lib as clavier
 
 
 @pytest.mark.parametrize(

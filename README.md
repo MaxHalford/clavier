@@ -62,7 +62,7 @@ pip install git+https://github.com/MaxHalford/clavier
 This package provides a list of keyboard layouts. For instance, we'll load the [QWERTY](https://www.wikiwand.com/en/QWERTY) keyboard layout.
 
 ```py
->>> import clavier
+>>> import clavier_lib as clavier
 >>> keyboard = clavier.load_qwerty()
 >>> keyboard
 1 2 3 4 5 6 7 8 9 0 - =
